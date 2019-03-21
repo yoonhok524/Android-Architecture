@@ -20,7 +20,7 @@ interface MoviesApi {
     fun getMoviesNowPlaying(@Query("api_key") apiKey: String): Single<NowPlayingResp>
 
     @GET("/3/movie/{movieId}")
-    fun getMovie(@Query("api_key") apiKey: String, @Path("movieId") movieId: String): Single<TmdbMovieResp>
+    fun getMovie(@Path("movieId") movieId: String, @Query("api_key") apiKey: String): Single<TmdbMovieResp>
 
     companion object {
         fun getService(): MoviesApi {

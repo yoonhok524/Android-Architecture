@@ -15,7 +15,7 @@ class MoviesRemoteDataSource(
     override fun getNowPlaying(): Single<List<SimpleMovie>> = api.getMoviesNowPlaying(API_KEY)
         .map { it.mapToDomain() }
 
-    override fun getMovie(id: String): Single<Movie> = api.getMovie(API_KEY, id)
+    override fun getMovie(id: String): Single<Movie> = api.getMovie(id, API_KEY)
         .map { it.mapToDomain() }
 
 }
