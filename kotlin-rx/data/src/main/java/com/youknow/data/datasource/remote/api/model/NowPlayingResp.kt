@@ -45,12 +45,9 @@ fun NowPlayingResp.mapToDomain(): List<SimpleMovie> = results.map {
     SimpleMovie(
         posterPath = it.posterPath,
         adult = it.adult,
-        overview = it.overview,
         releaseDate = it.releaseDate,
         id = it.id,
         title = it.title,
-        popularity = it.popularity,
-        voteCount = it.voteCount,
         voteAverage = it.voteAverage
     )
 }.toList()
