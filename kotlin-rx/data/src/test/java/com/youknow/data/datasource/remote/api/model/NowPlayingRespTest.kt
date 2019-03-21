@@ -68,9 +68,9 @@ class NowPlayingRespTest {
     @Test
     fun mapToDomainTest() {
         val expected: List<SimpleMovie> = listOf(
-            SimpleMovie("path 1", false, "overview 1", "2019-03-01", 1, "1", 1f, 1, 1f),
-            SimpleMovie("path 2", true, "overview 2", "2019-03-02", 2, "2", 2f, 2, 2f),
-            SimpleMovie("path 3", true, "overview 3", "2019-03-03", 3, "3", 3f, 3, 3f)
+            SimpleMovie("path 1", false, "2019-03-01", 1, "1", 1f),
+            SimpleMovie("path 2", true,  "2019-03-02", 2, "2", 2f),
+            SimpleMovie("path 3", true, "2019-03-03", 3, "3", 3f)
         )
 
         assertEquals(expected, nowPlayingResp.mapToDomain())

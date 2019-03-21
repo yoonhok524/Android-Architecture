@@ -9,7 +9,7 @@ class TmdbMovieRespTest {
     private val tmdbMovieResp = TmdbMovieResp(
         adult= false,
         backdropPath= "b path",
-        belongsToCollection= "btc",
+        belongsToCollection= MovieCollection(1, "collection", "path", "backpath"),
         budget= 0,
         genres = listOf(Genre(111, "g1"), Genre(222, "g2")),
         homepage= "home page",

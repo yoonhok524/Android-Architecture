@@ -4,8 +4,8 @@ import com.youknow.data.datasource.remote.api.API_KEY
 import com.youknow.data.datasource.remote.api.MoviesApi
 import com.youknow.data.datasource.remote.api.model.NowPlayingResp
 import com.youknow.data.datasource.remote.api.model.TmdbMovieResp
-import com.youknow.data.datasource.remote.api.model.TmdbMovieRespTest
 import com.youknow.data.datasource.remote.api.model.mapToDomain
+import com.youknow.domain.model.Movie
 import com.youknow.domain.model.SimpleMovie
 import io.reactivex.Single
 import org.junit.Before
@@ -23,7 +23,7 @@ class MoviesRemoteDataSourceTest {
     private val nowPlayingResp = NowPlayingResp()
     private val nowPlayingList: List<SimpleMovie> = nowPlayingResp.mapToDomain()
     private val tmdbMovieResp = TmdbMovieResp()
-    private val movie = tmdbMovieResp.mapToDomain()
+    private val movie = Movie()
     private val exception = Exception()
 
     @Before
@@ -53,7 +53,7 @@ class MoviesRemoteDataSourceTest {
 
     @Test
     fun `getMovie 정상 케이스`() {
-        `when`(mockApi.getMovie(API_KEY, "10")).thenReturn(Single.just(tmdbMovieResp))
+        `when`(mockApi.getMovie("10", API_KEY)).thenReturn(Single.just(tmdbMovieResp))
 
         moviesRemoteDataSource.getMovie("10")
             .test()
@@ -62,7 +62,7 @@ class MoviesRemoteDataSourceTest {
 
     @Test
     fun `getMovie 예외 케이스`() {
-        `when`(mockApi.getMovie(API_KEY, "10")).thenReturn(Single.error(exception))
+        `when`(mockApi.getMovie("10", API_KEY)).thenReturn(Single.error(exception))
 
         moviesRemoteDataSource.getMovie("10")
             .test()

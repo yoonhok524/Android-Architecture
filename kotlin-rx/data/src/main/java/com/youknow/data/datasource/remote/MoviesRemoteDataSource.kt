@@ -10,7 +10,7 @@ import io.reactivex.Single
 
 class MoviesRemoteDataSource(
     private val api: MoviesApi
-): MoviesDataSource {
+) : MoviesDataSource {
 
     override fun getNowPlaying(): Single<List<SimpleMovie>> = api.getMoviesNowPlaying(API_KEY)
         .map { it.mapToDomain() }

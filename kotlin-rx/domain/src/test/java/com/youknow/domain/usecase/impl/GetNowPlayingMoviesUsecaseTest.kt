@@ -1,7 +1,9 @@
-package com.youknow.domain.usecase
+package com.youknow.domain.usecase.impl
 
 import com.youknow.domain.model.SimpleMovie
 import com.youknow.domain.repository.MoviesRepository
+import com.youknow.domain.usecase.GetNowPlayingMovies
+import com.youknow.domain.usecase.GetNowPlayingMoviesUsecase
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -19,7 +21,7 @@ class GetNowPlayingMoviesUsecaseTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        getNowPlayingMoviesUsecase = GetNowPlayingMovies(movieRepository)
+        getNowPlayingMoviesUsecase = GetNowPlayingMoviesUsecase(movieRepository)
     }
 
     @Test

@@ -11,7 +11,7 @@ data class TmdbMovieResp(
     val belongsToCollection: MovieCollection = MovieCollection(),
     val budget: Int = 0,
     val genres: List<Genre> = listOf(),
-    val homepage: String? = null,
+    val homepage: String? = "",
     val id: Int = 0,
     @SerializedName("imdb_id")
     val imdbId: String = "",
