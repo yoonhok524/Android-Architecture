@@ -21,30 +21,24 @@ class MoviesRepositoryImplTest {
     private lateinit var movieRepository: MoviesRepositoryImpl
 
     private val mockMovie1 =
-        SimpleMovie("posterpath1", false, "overview1", "2019-03-01", 10, "hello world1", "", "1", "", 10f, 10, 10f)
+        SimpleMovie("posterpath1", false, "overview1", "2019-03-01", 10, "hello world1", 10f, 10, 10f)
     private val mockMovie2 =
-        SimpleMovie("posterpath2", true, "overview2", "2019-03-02", 20, "hello world2", "", "2", "", 9f, 9, 9f)
+        SimpleMovie("posterpath2", true, "overview2", "2019-03-02", 20, "hello world2", 9f, 9, 9f)
     private val mockMovie3 =
-        SimpleMovie("posterpath3", false, "overview3", "2019-03-03", 30, "hello world3", "", "3", "", 8f, 8, 8f)
+        SimpleMovie("posterpath3", false, "overview3", "2019-03-03", 30, "hello world3",8f, 8, 8f)
     private val mockMovie4 =
-        SimpleMovie("posterpath4", false, "overview4", "2019-03-04", 40, "hello world4", "", "4", "", 7f, 7, 7f)
+        SimpleMovie("posterpath4", false, "overview4", "2019-03-04", 40, "hello world4",7f, 7, 7f)
     private val mockMovie5 =
-        SimpleMovie("posterpath5", false, "overview5", "2019-03-05", 50, "hello world5", "", "5", "", 6f, 6, 6f)
+        SimpleMovie("posterpath5", false, "overview5", "2019-03-05", 50, "hello world5", 6f, 6, 6f)
 
     private val mockMovie = Movie(
         adult = false,
-        backdropPath = "path",
-        budget = 1000,
-        genres = listOf(),
         homepage = "homepage",
         id = 10,
-        originalLanguage = "",
-        originalTitle = "",
         overview = "",
         popularity = 10f,
         posterPath = "",
         releaseDate = "",
-        revenue = 100,
         runtime = 100,
         status = "",
         title = "",
