@@ -5,8 +5,8 @@ import com.youknow.domain.model.SimpleMovie
 import com.youknow.domain.repository.MoviesRepository
 import io.reactivex.Single
 
-class GetMovieUsecase (private val moviesRepository: MoviesRepository) {
+class GetMovieUsecase (private val moviesRepository: MoviesRepository): GetMovie {
 
-    fun get(id: String): Single<Movie> = moviesRepository.getMovie(id)
+    override fun get(id: String): Single<Movie> = moviesRepository.getMovie(id)
 
 }

@@ -2,8 +2,9 @@ package com.youknow.movie.ui.movies
 
 import android.os.Looper
 import android.view.View
-import com.youknow.domain.usecase.GetNowPlayingMoviesUsecase
+import com.youknow.domain.usecase.GetNowPlayingMovies
 import com.youknow.movie.R
+import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -12,7 +13,9 @@ import org.jetbrains.anko.error
 
 class MoviesPresenter(
     private val view: MoviesContract.View,
-    private val getMovies: GetNowPlayingMoviesUsecase,
+    private val getMovies: GetNowPlayingMovies,
+    private val ioScheduler: Scheduler = Schedulers.io(),
+    private val uiScheduler: Scheduler = AndroidSchedulers.from(Looper.getMainLooper(), true),
     private val disposable: CompositeDisposable = CompositeDisposable()
 ) : MoviesContract.Presenter, AnkoLogger {
 
@@ -27,8 +30,8 @@ class MoviesPresenter(
                     view.showProgressBar(View.VISIBLE)
                     view.hideError()
                 }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.from(Looper.getMainLooper(), true))
+                .subscribeOn(ioScheduler)
+                .observeOn(uiScheduler)
                 .subscribe({ movies ->
                     view.showProgressBar(View.GONE)
                     if (movies.isNullOrEmpty()) {
@@ -38,8 +41,8 @@ class MoviesPresenter(
                     }
                 }, {t ->
                     view.showProgressBar(View.GONE)
-                    error("[Y.M.] getMoviesNowPlaying - failed: ${t.message}", t)
                     view.onError(R.string.err_get_movies_failed)
+                    error("[Y.M.] getMoviesNowPlaying - failed: ${t.message}", t)
                 })
         )
     }

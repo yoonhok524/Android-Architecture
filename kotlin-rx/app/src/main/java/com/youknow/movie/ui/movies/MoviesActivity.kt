@@ -10,10 +10,10 @@ import com.youknow.data.datasource.remote.MoviesRemoteDataSource
 import com.youknow.data.datasource.remote.api.MoviesApi
 import com.youknow.data.repository.MoviesRepositoryImpl
 import com.youknow.domain.model.SimpleMovie
-import com.youknow.domain.usecase.GetNowPlayingMoviesUsecase
 import com.youknow.movie.R
 import kotlinx.android.synthetic.main.activity_movies.*
 import android.support.v7.widget.LinearSnapHelper
+import com.youknow.domain.usecase.GetNowPlayingMoviesUsecase
 
 
 class MoviesActivity : AppCompatActivity(), MoviesContract.View {

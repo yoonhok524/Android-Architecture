@@ -14,12 +14,12 @@ class GetNowPlayingMoviesUsecaseTest {
     @Mock
     private lateinit var movieRepository: MoviesRepository
 
-    private lateinit var getNowPlayingMoviesUsecase: GetNowPlayingMoviesUsecase
+    private lateinit var getNowPlayingMoviesUsecase: GetNowPlayingMovies
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        getNowPlayingMoviesUsecase = GetNowPlayingMoviesUsecase(movieRepository)
+        getNowPlayingMoviesUsecase = GetNowPlayingMovies(movieRepository)
     }
 
     @Test

@@ -14,14 +14,14 @@ class GetMovieUsecaseTest {
     @Mock
     private lateinit var movieRepository: MoviesRepository
 
-    private lateinit var getMovieUsecase: GetMovieUsecase
+    private lateinit var getMovieUsecase: GetMovie
 
     private val mockId = "10"
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        getMovieUsecase = GetMovieUsecase(movieRepository)
+        getMovieUsecase = GetMovie(movieRepository)
     }
 
     @Test
