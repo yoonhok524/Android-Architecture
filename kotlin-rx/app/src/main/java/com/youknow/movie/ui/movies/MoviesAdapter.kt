@@ -12,8 +12,13 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MoviesAdapter(
     private val context: Context,
+    private val movieClickListener: MovieClickListener,
     val movies: MutableList<SimpleMovie> = mutableListOf()
 ) : RecyclerView.Adapter<MoviesAdapter.MovieHolder>() {
+
+    interface MovieClickListener {
+        fun onMovieClick(movieId: String)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder =
         MovieHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false))
@@ -27,6 +32,10 @@ class MoviesAdapter(
         holder.itemView.tvTitle.text = movie.title
         holder.itemView.tvRatingAvg.text = "${movie.voteAverage}"
         holder.itemView.tvReleaseDate.text = movie.releaseDate
+
+        holder.itemView.setOnClickListener {
+            movieClickListener.onMovieClick(movie.id.toString())
+        }
     }
 
     class MovieHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

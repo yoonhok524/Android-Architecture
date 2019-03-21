@@ -8,10 +8,10 @@ data class TmdbMovieResp(
     @SerializedName("backdrop_path")
     val backdropPath: String = "",
     @SerializedName("belongs_to_collection")
-    val belongsToCollection: String = "",
+    val belongsToCollection: MovieCollection = MovieCollection(),
     val budget: Int = 0,
     val genres: List<Genre> = listOf(),
-    val homepage: String = "",
+    val homepage: String? = null,
     val id: Int = 0,
     @SerializedName("imdb_id")
     val imdbId: String = "",
@@ -44,6 +44,15 @@ data class TmdbMovieResp(
     val voteCount: Int = 0
 )
 
+data class MovieCollection(
+    val id: Int = 0,
+    val name: String = "",
+    @SerializedName("poster_path")
+    val posterPath: String = "",
+    @SerializedName("backdrop_path")
+    val backdropPath: String = ""
+)
+
 data class Genre(
     val id: Int = 0,
     val name: String = ""
@@ -70,7 +79,7 @@ data class SpokenLanguage(
 
 fun TmdbMovieResp.mapToDomain(): Movie = Movie(
     adult = this.adult,
-    homepage = this.homepage,
+    homepage = this.homepage ?: "",
     id = this.id,
     overview = this.overview,
     popularity = this.popularity,

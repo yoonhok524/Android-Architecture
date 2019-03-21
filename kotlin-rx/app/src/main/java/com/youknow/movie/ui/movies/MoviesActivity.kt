@@ -1,5 +1,6 @@
 package com.youknow.movie.ui.movies
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -14,9 +15,11 @@ import com.youknow.movie.R
 import kotlinx.android.synthetic.main.activity_movies.*
 import android.support.v7.widget.LinearSnapHelper
 import com.youknow.domain.usecase.GetNowPlayingMoviesUsecase
+import com.youknow.movie.ui.details.DetailsActivity
 
+const val MOVIE_ID = "movie_id"
 
-class MoviesActivity : AppCompatActivity(), MoviesContract.View {
+class MoviesActivity : AppCompatActivity(), MoviesContract.View, MoviesAdapter.MovieClickListener {
 
     private val moviesPresenter: MoviesContract.Presenter by lazy {
         val movieCacheDataSource = MoviesCacheDataSource()
@@ -27,7 +30,7 @@ class MoviesActivity : AppCompatActivity(), MoviesContract.View {
         MoviesPresenter(this, getNowPlayingMoviesUsecase)
     }
 
-    private val moviesAdapter: MoviesAdapter by lazy { MoviesAdapter(this) }
+    private val moviesAdapter: MoviesAdapter by lazy { MoviesAdapter(this, this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,5 +65,9 @@ class MoviesActivity : AppCompatActivity(), MoviesContract.View {
 
     override fun hideError() {
         tvErrMessage.visibility = View.GONE
+    }
+
+    override fun onMovieClick(movieId: String) {
+        startActivity(Intent(this, DetailsActivity::class.java).putExtra(MOVIE_ID, movieId))
     }
 }
