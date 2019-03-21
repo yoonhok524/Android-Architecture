@@ -28,8 +28,8 @@ class DetailsPresenter(
         disposable.add(
             getMovie.get(movieId)
                 .doOnSubscribe {
-                    view.hideError()
                     view.showProgressBar(View.VISIBLE)
+                    view.hideError()
                 }
                 .subscribeOn(ioScheduler)
                 .observeOn(uiScheduler)
@@ -38,7 +38,7 @@ class DetailsPresenter(
                     view.onMovieLoaded(movie)
                 }, { t ->
                     view.showProgressBar(View.GONE)
-                    view.onError(R.string.err_get_movies_failed)
+                    view.onError(R.string.err_get_movie_failed)
                     error("[Y.M.] getMovie - failed: ${t.message}", t)
                 })
         )
