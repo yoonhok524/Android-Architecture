@@ -12,6 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
+const val API_KEY = "8728476f04abf3f446e9e4068d443b54"
 
 interface MoviesApi {
 

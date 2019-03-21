@@ -4,68 +4,68 @@ import com.google.gson.annotations.SerializedName
 import com.youknow.domain.model.Movie
 
 data class TmdbMovieResp(
-    val adult: Boolean,
+    val adult: Boolean = false,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String = "",
     @SerializedName("belongs_to_collection")
-    val belongsToCollection: String,
-    val budget: Int,
-    val genres: List<Genre>,
-    val homepage: String,
-    val id: Int,
+    val belongsToCollection: String = "",
+    val budget: Int = 0,
+    val genres: List<Genre> = listOf(),
+    val homepage: String = "",
+    val id: Int = 0,
     @SerializedName("imdb_id")
-    val imdbId: String,
+    val imdbId: String = "",
     @SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String = "",
     @SerializedName("original_title")
-    val originalTitle: String,
-    val overview: String,
-    val popularity: Float,
+    val originalTitle: String = "",
+    val overview: String = "",
+    val popularity: Float = 0f,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String = "",
     @SerializedName("production_companies")
-    val productionCompanies: List<ProductionCompany>,
+    val productionCompanies: List<ProductionCompany> = listOf(),
     @SerializedName("production_countries")
-    val productionCountries: List<ProductionCountry>,
+    val productionCountries: List<ProductionCountry> = listOf(),
     @SerializedName("release_date")
-    val releaseDate: String,
-    val revenue: Int,
-    val runtime: Int,
+    val releaseDate: String = "",
+    val revenue: Int = 0,
+    val runtime: Int = 0,
     @SerializedName("spoken_languages")
-    val spokenLanguages: List<SpokenLanguage>,
-    val status: String,
+    val spokenLanguages: List<SpokenLanguage> = listOf(),
+    val status: String = "",
     @SerializedName("tagline")
-    val tagLine: String,
-    val title: String,
-    val video: Boolean,
+    val tagLine: String = "",
+    val title: String = "",
+    val video: Boolean = false,
     @SerializedName("vote_average")
-    val voteAverage: Float,
+    val voteAverage: Float = 0f,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int = 0
 )
 
 data class Genre(
-    val id: Int,
-    val name: String
+    val id: Int = 0,
+    val name: String = ""
 )
 
 data class ProductionCompany(
-    val name: String,
-    val id: Int,
+    val name: String = "",
+    val id: Int = 0,
     @SerializedName("logo_path")
-    val logoPath: String,
+    val logoPath: String = "",
     @SerializedName("origin_country")
-    val originCountry: String
+    val originCountry: String = ""
 )
 
 data class ProductionCountry(
-    val iso_3166_1: String,
-    val name: String
+    val iso_3166_1: String = "",
+    val name: String = ""
 )
 
 data class SpokenLanguage(
-    val iso_639_1: String,
-    val name: String
+    val iso_639_1: String = "",
+    val name: String = ""
 )
 
 fun TmdbMovieResp.mapToDomain(): Movie = Movie(

@@ -1,7 +1,6 @@
 package com.youknow.data.repository
 
 import com.youknow.data.datasource.MoviesDataSource
-import com.youknow.data.datasource.cache.MoviesCacheDataSource
 import com.youknow.domain.model.Movie
 import com.youknow.domain.model.SimpleMovie
 import com.youknow.domain.repository.MoviesRepository
