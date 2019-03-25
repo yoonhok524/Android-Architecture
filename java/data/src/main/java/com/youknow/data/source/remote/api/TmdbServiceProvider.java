@@ -1,4 +1,4 @@
-package com.youknow.movie.data.api;
+package com.youknow.data.source.remote.api;
 
 import retrofit2.Retrofit;
 

@@ -1,6 +1,6 @@
 package com.youknow.movie.ui.movies;
 
-import com.youknow.movie.domain.tasks.GetMoviesTask;
+import com.youknow.domain.usecase.GetMoviesTask;
 
 public class MoviesPresenter implements MoviesContract.Presenter {
 

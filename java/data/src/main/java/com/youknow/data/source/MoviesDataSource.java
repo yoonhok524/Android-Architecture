@@ -1,4 +1,4 @@
-package com.youknow.movie.data.source;
+package com.youknow.data.source;
 
 public interface MoviesDataSource {
 
