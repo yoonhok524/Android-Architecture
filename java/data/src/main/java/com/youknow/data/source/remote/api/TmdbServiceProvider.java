@@ -4,16 +4,21 @@ import retrofit2.Retrofit;
 
 public class TmdbServiceProvider {
 
-    private TmdbServiceProvider() {
+    private static TmdbService tmdbService = null;
 
+    private TmdbServiceProvider() {
     }
 
-    public static TmdbService getService() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/")
-                .build();
+    public static synchronized TmdbService getService() {
+        if (tmdbService == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://api.themoviedb.org/3/")
+                    .build();
 
-        return retrofit.create(TmdbService.class);
+            tmdbService = retrofit.create(TmdbService.class);
+        }
+
+        return tmdbService;
     }
 
 }
