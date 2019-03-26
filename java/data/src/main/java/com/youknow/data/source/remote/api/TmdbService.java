@@ -10,6 +10,8 @@ import retrofit2.http.Query;
 
 public interface TmdbService {
 
+    String API_KEY = "8728476f04abf3f446e9e4068d443b54";
+
     @GET("/movie/now_playing")
     Call<NowPlayingResp> getMoviesNowPlaying(@Query("api_key") String apiKey);
 

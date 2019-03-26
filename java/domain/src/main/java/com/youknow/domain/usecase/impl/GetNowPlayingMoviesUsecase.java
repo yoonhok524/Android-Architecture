@@ -1,14 +1,26 @@
 package com.youknow.domain.usecase.impl;
 
+import com.youknow.domain.model.SimpleMovie;
 import com.youknow.domain.repository.MoviesRepository;
-import com.youknow.domain.usecase.GetNowPlayingMovie;
+import com.youknow.domain.usecase.GetNowPlayingMovies;
 
-public class GetNowPlayingMoviesUsecase implements GetNowPlayingMovie {
+import java.util.List;
 
-    private MoviesRepository mMoviesRepository;
+public class GetNowPlayingMoviesUsecase implements GetNowPlayingMovies {
+
+    private MoviesRepository moviesRepository;
 
     public GetNowPlayingMoviesUsecase(MoviesRepository moviesRepository) {
-        mMoviesRepository = moviesRepository;
+        this.moviesRepository = moviesRepository;
     }
 
+    @Override
+    public void get(final GetMoviesCallback callback) {
+        moviesRepository.getMovies(new MoviesRepository.MoviesLoadedCallback() {
+            @Override
+            public void onMoviesLoaded(List<SimpleMovie> movies) {
+                callback.onMoviesLoaded(movies);
+            }
+        });
+    }
 }

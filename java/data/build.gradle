@@ -4,13 +4,17 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':domain')
 
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.6'
+    annotationProcessor 'org.projectlombok:lombok:1.18.6'
+
+    // OkHttp3
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
-
-    // OkHttp3
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 
     // Test
     testImplementation 'junit:junit:4.12'

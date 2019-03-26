@@ -7,8 +7,16 @@ import java.util.List;
 
 public interface MoviesRepository {
 
-    List<SimpleMovie> getMovies();
+    interface MoviesLoadedCallback {
+        void onMoviesLoaded(List<SimpleMovie> movies);
+    }
 
-    Movie getMovie(String movieId);
+    interface MovieLoadedCallback {
+        void onMovieLoaded(Movie movie);
+    }
+
+    void getMovies(MoviesLoadedCallback callback);
+
+    void getMovie(String movieId, MovieLoadedCallback callback);
 
 }
