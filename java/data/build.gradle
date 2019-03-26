@@ -3,6 +3,7 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':domain')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
 
     // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.6'

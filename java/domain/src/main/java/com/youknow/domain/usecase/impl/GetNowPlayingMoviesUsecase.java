@@ -16,6 +16,7 @@ public class GetNowPlayingMoviesUsecase implements GetNowPlayingMovies {
 
     @Override
     public void get(final GetMoviesCallback callback) {
+        Log.d(TAG, "[Y.M.] getMovies");
         moviesRepository.getMovies(new MoviesRepository.MoviesLoadedCallback() {
             @Override
             public void onMoviesLoaded(List<SimpleMovie> movies) {

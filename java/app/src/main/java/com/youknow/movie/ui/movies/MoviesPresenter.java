@@ -1,11 +1,15 @@
 package com.youknow.movie.ui.movies;
 
+import android.util.Log;
+
 import com.youknow.domain.model.SimpleMovie;
 import com.youknow.domain.usecase.GetNowPlayingMovies;
 
 import java.util.List;
 
 public class MoviesPresenter implements MoviesContract.Presenter {
+
+    private static final String TAG = MoviesPresenter.class.getSimpleName();
 
     private MoviesContract.View view;
     private GetNowPlayingMovies getMovies;
@@ -17,6 +21,7 @@ public class MoviesPresenter implements MoviesContract.Presenter {
 
     @Override
     public void getMovies() {
+        Log.d(TAG, "[Y.M.] getMovies");
         getMovies.get(new GetNowPlayingMovies.GetMoviesCallback() {
             @Override
             public void onMoviesLoaded(List<SimpleMovie> movies) {

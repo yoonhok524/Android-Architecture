@@ -17,6 +17,7 @@ public class NowPlayingResp {
     private int totalResults;
 
     public static List<SimpleMovie> mapToDomain(NowPlayingResp nowPlayingResp) {
+        System.out.println("[Y.M.] mapToDomain - " + nowPlayingResp);
         List<SimpleMovie> simpleMovieList = new ArrayList<>();
         for (Result result : nowPlayingResp.results) {
             simpleMovieList.add(new SimpleMovie(result.getPosterPath(), result.isAdult(), result.getReleaseDate(), result.getId(), result.getTitle(), result.getVoteAverage()));
