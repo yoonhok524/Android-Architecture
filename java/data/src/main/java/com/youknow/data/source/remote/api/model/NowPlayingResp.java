@@ -1,14 +1,17 @@
 package com.youknow.data.source.remote.api.model;
 
 import com.google.gson.annotations.SerializedName;
+
 import com.youknow.domain.model.SimpleMovie;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class NowPlayingResp {
     private int page;
     private List<Result> results;
@@ -28,6 +31,7 @@ public class NowPlayingResp {
 }
 
 @Data
+@NoArgsConstructor
 class Result {
     @SerializedName("poster_path")
     private String posterPath;
@@ -54,6 +58,7 @@ class Result {
 }
 
 @Data
+@NoArgsConstructor
 class Dates {
     private String maximum;
     private String minimum;

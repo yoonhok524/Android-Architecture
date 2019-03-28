@@ -4,9 +4,13 @@ import com.youknow.domain.model.SimpleMovie;
 import com.youknow.domain.repository.MoviesRepository;
 import com.youknow.domain.usecase.GetNowPlayingMovies;
 
+import android.util.Log;
+
 import java.util.List;
 
 public class GetNowPlayingMoviesUsecase implements GetNowPlayingMovies {
+
+    private static final String TAG = "GetNowPlayingMoviesUsec";
 
     private MoviesRepository moviesRepository;
 
