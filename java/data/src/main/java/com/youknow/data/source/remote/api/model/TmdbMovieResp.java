@@ -1,6 +1,7 @@
 package com.youknow.data.source.remote.api.model;
 
 import com.google.gson.annotations.SerializedName;
+
 import com.youknow.domain.model.Movie;
 
 import java.util.List;
