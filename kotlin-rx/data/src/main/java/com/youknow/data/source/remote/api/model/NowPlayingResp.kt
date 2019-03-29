@@ -1,4 +1,4 @@
-package com.youknow.data.datasource.remote.api.model
+package com.youknow.data.source.remote.api.model
 
 import com.google.gson.annotations.SerializedName
 import com.youknow.domain.model.SimpleMovie

@@ -1,6 +1,6 @@
-package com.youknow.data.datasource.cache
+package com.youknow.data.source.cache
 
-import com.youknow.data.datasource.MoviesDataSource
+import com.youknow.data.source.MoviesDataSource
 import com.youknow.domain.model.Movie
 import com.youknow.domain.model.SimpleMovie
 import io.reactivex.Single

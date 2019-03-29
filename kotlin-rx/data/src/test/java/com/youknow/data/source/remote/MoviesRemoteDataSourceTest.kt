@@ -1,10 +1,10 @@
-package com.youknow.data.datasource.remote
+package com.youknow.data.source.remote
 
-import com.youknow.data.datasource.remote.api.API_KEY
-import com.youknow.data.datasource.remote.api.MoviesApi
-import com.youknow.data.datasource.remote.api.model.NowPlayingResp
-import com.youknow.data.datasource.remote.api.model.TmdbMovieResp
-import com.youknow.data.datasource.remote.api.model.mapToDomain
+import com.youknow.data.BuildConfig
+import com.youknow.data.source.remote.api.MoviesApi
+import com.youknow.data.source.remote.api.model.NowPlayingResp
+import com.youknow.data.source.remote.api.model.TmdbMovieResp
+import com.youknow.data.source.remote.api.model.mapToDomain
 import com.youknow.domain.model.Movie
 import com.youknow.domain.model.SimpleMovie
 import io.reactivex.Single
@@ -35,7 +35,7 @@ class MoviesRemoteDataSourceTest {
 
     @Test
     fun `getNowPlaying 정상 케이스`() {
-        `when`(mockApi.getMoviesNowPlaying(API_KEY)).thenReturn(Single.just(nowPlayingResp))
+        `when`(mockApi.getMoviesNowPlaying(BuildConfig.API_KEY)).thenReturn(Single.just(nowPlayingResp))
 
         moviesRemoteDataSource.getNowPlaying()
             .test()
@@ -44,7 +44,7 @@ class MoviesRemoteDataSourceTest {
 
     @Test
     fun `getNowPlaying 예외 케이스`() {
-        `when`(mockApi.getMoviesNowPlaying(API_KEY)).thenReturn(Single.error(exception))
+        `when`(mockApi.getMoviesNowPlaying(BuildConfig.API_KEY)).thenReturn(Single.error(exception))
 
         moviesRemoteDataSource.getNowPlaying()
             .test()
@@ -53,7 +53,7 @@ class MoviesRemoteDataSourceTest {
 
     @Test
     fun `getMovie 정상 케이스`() {
-        `when`(mockApi.getMovie("10", API_KEY)).thenReturn(Single.just(tmdbMovieResp))
+        `when`(mockApi.getMovie("10", BuildConfig.API_KEY)).thenReturn(Single.just(tmdbMovieResp))
 
         moviesRemoteDataSource.getMovie("10")
             .test()
@@ -62,7 +62,7 @@ class MoviesRemoteDataSourceTest {
 
     @Test
     fun `getMovie 예외 케이스`() {
-        `when`(mockApi.getMovie("10", API_KEY)).thenReturn(Single.error(exception))
+        `when`(mockApi.getMovie("10", BuildConfig.API_KEY)).thenReturn(Single.error(exception))
 
         moviesRemoteDataSource.getMovie("10")
             .test()

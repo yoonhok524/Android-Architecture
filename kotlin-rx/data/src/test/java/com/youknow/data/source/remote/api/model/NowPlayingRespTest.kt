@@ -1,4 +1,4 @@
-package com.youknow.data.datasource.remote.api.model
+package com.youknow.data.source.remote.api.model
 
 import com.youknow.domain.model.SimpleMovie
 import org.junit.Assert.assertEquals

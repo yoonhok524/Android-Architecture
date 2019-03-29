@@ -1,4 +1,4 @@
-package com.youknow.data.datasource
+package com.youknow.data.source
 
 import com.youknow.domain.model.Movie
 import com.youknow.domain.model.SimpleMovie

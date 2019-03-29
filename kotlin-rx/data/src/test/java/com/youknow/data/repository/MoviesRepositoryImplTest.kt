@@ -1,6 +1,6 @@
 package com.youknow.data.repository
 
-import com.youknow.data.datasource.MoviesDataSource
+import com.youknow.data.source.MoviesDataSource
 import com.youknow.domain.model.Movie
 import com.youknow.domain.model.SimpleMovie
 import io.reactivex.Single

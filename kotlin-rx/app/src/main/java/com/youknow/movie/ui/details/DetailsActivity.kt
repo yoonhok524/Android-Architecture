@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.bumptech.glide.Glide
-import com.youknow.data.datasource.cache.MoviesCacheDataSource
-import com.youknow.data.datasource.remote.MoviesRemoteDataSource
-import com.youknow.data.datasource.remote.api.MoviesApi
+import com.youknow.data.source.cache.MoviesCacheDataSource
+import com.youknow.data.source.remote.MoviesRemoteDataSource
+import com.youknow.data.source.remote.api.MoviesApi
 import com.youknow.data.repository.MoviesRepositoryImpl
 import com.youknow.domain.model.Movie
 import com.youknow.domain.usecase.GetMovieUsecase
