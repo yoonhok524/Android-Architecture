@@ -7,11 +7,13 @@ import com.youknow.domain.model.SimpleMovie;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
-@NoArgsConstructor
 public class NowPlayingResp {
     private int page;
     private List<Result> results;
@@ -31,7 +33,6 @@ public class NowPlayingResp {
 }
 
 @Data
-@NoArgsConstructor
 class Result {
     @SerializedName("poster_path")
     private String posterPath;
@@ -58,7 +59,6 @@ class Result {
 }
 
 @Data
-@NoArgsConstructor
 class Dates {
     private String maximum;
     private String minimum;

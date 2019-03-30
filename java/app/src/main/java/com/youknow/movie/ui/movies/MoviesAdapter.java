@@ -36,7 +36,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieHolde
     public void onBindViewHolder(@NonNull MovieHolder holder, int i) {
         SimpleMovie movie = movies.get(i);
 
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500/${movie.posterPath}").into(holder.ivPoster);
+        Glide.with(context).load("https://image.tmdb.org/t/p/w500/" + movie.getPosterPath()).into(holder.ivPoster);
         holder.tvTitle.setText(movie.getTitle());
         holder.tvReleaseDate.setText(movie.getReleaseDate());
         holder.tvRatingAvg.setText(String.valueOf(movie.getVoteAverage()));
