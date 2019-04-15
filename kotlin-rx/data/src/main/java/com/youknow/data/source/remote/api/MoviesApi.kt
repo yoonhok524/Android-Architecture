@@ -17,6 +17,9 @@ interface MoviesApi {
     @GET("/3/movie/now_playing")
     fun getMoviesNowPlaying(@Query("api_key") apiKey: String): Single<NowPlayingResp>
 
+    @GET("/3/movie/upcoming")
+    fun getMoviesUpcoming(@Query("api_key") apiKey: String): Single<NowPlayingResp>
+
     @GET("/3/movie/{movieId}?api_key=")
     fun getMovie(@Path("movieId") movieId: String, @Query("api_key") apiKey: String): Single<TmdbMovieResp>
 

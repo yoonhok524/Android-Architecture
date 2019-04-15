@@ -1,8 +1,8 @@
-package com.youknow.movie.ui.movies
+package com.youknow.movie.ui.nowplaying
 
 import com.youknow.domain.model.SimpleMovie
 
-interface MoviesContract {
+interface NowPlayingContract {
     interface View {
         fun showProgressBar(visibility: Int)
         fun onMoviesLoaded(movies: List<SimpleMovie>)

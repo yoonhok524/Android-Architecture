@@ -1,17 +1,17 @@
 package com.youknow.movie.ui.details
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.youknow.data.repository.MoviesRepositoryImpl
 import com.youknow.data.source.cache.MoviesCacheDataSource
 import com.youknow.data.source.remote.MoviesRemoteDataSource
 import com.youknow.data.source.remote.api.MoviesApi
-import com.youknow.data.repository.MoviesRepositoryImpl
 import com.youknow.domain.model.Movie
 import com.youknow.domain.usecase.GetMovieUsecase
 import com.youknow.movie.R
-import com.youknow.movie.ui.movies.MOVIE_ID
+import com.youknow.movie.ui.MOVIE_ID
 import kotlinx.android.synthetic.main.activity_details.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error

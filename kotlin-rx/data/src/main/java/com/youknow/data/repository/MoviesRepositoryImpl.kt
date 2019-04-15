@@ -13,6 +13,8 @@ class MoviesRepositoryImpl(
 
     override fun getNowPlaying(): Single<List<SimpleMovie>> = moviesRemoteDataSource.getNowPlaying()
 
+    override fun getUpcoming(): Single<List<SimpleMovie>> = moviesRemoteDataSource.getUpcoming()
+
     override fun getMovie(id: String): Single<Movie> = moviesRemoteDataSource.getMovie(id)
 
 }

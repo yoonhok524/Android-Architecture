@@ -11,6 +11,10 @@ class MoviesCacheDataSource: MoviesDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun getUpcoming(): Single<List<SimpleMovie>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun getMovie(id: String): Single<Movie> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

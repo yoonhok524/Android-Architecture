@@ -1,4 +1,4 @@
-package com.youknow.movie.ui.movies
+package com.youknow.movie.ui.nowplaying
 
 import android.view.View
 import com.youknow.domain.model.SimpleMovie
@@ -17,12 +17,12 @@ import org.mockito.MockitoAnnotations
 class MoviesPresenterTest {
 
     @Mock
-    private lateinit var mockView: MoviesContract.View
+    private lateinit var mockView: NowPlayingContract.View
 
     @Mock
     private lateinit var getNowPlayingMovies: GetNowPlayingMovies
 
-    private lateinit var moviesPresenter: MoviesPresenter
+    private lateinit var moviesPresenter: NowPlayingPresenter
 
     private lateinit var inOrder: InOrder
     private lateinit var testScheduler: TestScheduler
@@ -47,7 +47,7 @@ class MoviesPresenterTest {
         inOrder = Mockito.inOrder(mockView)
 
         testScheduler = TestScheduler()
-        moviesPresenter = MoviesPresenter(mockView, getNowPlayingMovies, testScheduler, testScheduler)
+        moviesPresenter = NowPlayingPresenter(mockView, getNowPlayingMovies, testScheduler, testScheduler)
     }
 
     @Test

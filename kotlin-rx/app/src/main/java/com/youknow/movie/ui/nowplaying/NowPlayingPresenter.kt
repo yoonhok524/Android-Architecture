@@ -1,4 +1,4 @@
-package com.youknow.movie.ui.movies
+package com.youknow.movie.ui.nowplaying
 
 import android.os.Looper
 import android.view.View
@@ -11,13 +11,13 @@ import io.reactivex.schedulers.Schedulers
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error
 
-class MoviesPresenter(
-    private val view: MoviesContract.View,
+class NowPlayingPresenter(
+    private val view: NowPlayingContract.View,
     private val getMovies: GetNowPlayingMovies,
     private val ioScheduler: Scheduler = Schedulers.io(),
     private val uiScheduler: Scheduler = AndroidSchedulers.from(Looper.getMainLooper(), true),
     private val disposable: CompositeDisposable = CompositeDisposable()
-) : MoviesContract.Presenter, AnkoLogger {
+) : NowPlayingContract.Presenter, AnkoLogger {
 
     override fun unsubscribe() {
         disposable.clear()
