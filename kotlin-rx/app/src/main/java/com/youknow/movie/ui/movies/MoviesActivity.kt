@@ -40,7 +40,7 @@ class MoviesActivity : AppCompatActivity(), MoviesContract.View, MoviesAdapter.M
 
         LinearSnapHelper().attachToRecyclerView(rvMovies)
         rvMovies.adapter = moviesAdapter
-        rvMovies.layoutManager = LinearLayoutManager(this, LinearLayout.HORIZONTAL, false)
+        rvMovies.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onDestroy() {
