@@ -2,7 +2,9 @@ package com.youknow.movie.ui.details
 
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.youknow.data.repository.MoviesRepositoryImpl
 import com.youknow.data.source.cache.MoviesCacheDataSource
@@ -12,6 +14,7 @@ import com.youknow.domain.model.Movie
 import com.youknow.domain.usecase.GetMovieUsecase
 import com.youknow.movie.R
 import com.youknow.movie.ui.MOVIE_ID
+import com.youknow.movie.ui.adapter.GenreAdapter
 import kotlinx.android.synthetic.main.activity_details.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error
@@ -50,12 +53,17 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View, AnkoLogger {
     }
 
     override fun onMovieLoaded(movie: Movie) {
-        title = movie.title
+        tvOverviewLabel.visibility = View.VISIBLE
+
+        rvGenres.adapter = GenreAdapter(movie.genres)
+        rvGenres.layoutManager = LinearLayoutManager(this, LinearLayout.HORIZONTAL, false)
+
         Glide.with(this).load("https://image.tmdb.org/t/p/w500/${movie.posterPath}").into(ivPoster)
         tvOverview.text = movie.overview
         tvReleaseDate.text = movie.releaseDate
         tvRuntime.text = getString(R.string.runtime_args, movie.runtime)
         tvVoteAvg.text = movie.voteAverage.toString()
+        tvTagline.text = "\"${movie.tagline}\""
     }
 
     override fun onError(msgResId: Int) {

@@ -79,6 +79,7 @@ data class SpokenLanguage(
 
 fun TmdbMovieResp.mapToDomain(): Movie = Movie(
     adult = this.adult,
+    genres = this.genres.map { it.name }.toList(),
     homepage = this.homepage ?: "",
     id = this.id,
     overview = this.overview,
@@ -87,6 +88,7 @@ fun TmdbMovieResp.mapToDomain(): Movie = Movie(
     releaseDate = this.releaseDate,
     runtime = this.runtime,
     status = this.status,
+    tagline = this.tagLine,
     title = this.title,
     voteAverage = this.voteAverage,
     voteCount = this.voteCount
