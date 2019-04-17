@@ -14,8 +14,13 @@ public class MoviesRepositoryImpl implements MoviesRepository {
     }
 
     @Override
-    public void getMovies(MoviesLoadedCallback callback) {
-        moviesRemoteDataSource.getMovies(callback);
+    public void getNowPlaying(MoviesLoadedCallback callback) {
+        moviesRemoteDataSource.getNowPlaying(callback);
+    }
+
+    @Override
+    public void getUpcoming(MoviesLoadedCallback callback) {
+        moviesRemoteDataSource.getUpcoming(callback);
     }
 
     @Override

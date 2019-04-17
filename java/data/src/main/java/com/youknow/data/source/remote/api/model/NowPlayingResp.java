@@ -1,17 +1,12 @@
 package com.youknow.data.source.remote.api.model;
 
 import com.google.gson.annotations.SerializedName;
-
 import com.youknow.domain.model.SimpleMovie;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Data
 public class NowPlayingResp {
