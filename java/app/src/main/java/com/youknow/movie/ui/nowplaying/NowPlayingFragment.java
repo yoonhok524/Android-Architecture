@@ -9,6 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.youknow.data.repository.MoviesRepositoryImpl;
 import com.youknow.data.source.cache.MoviesCacheDataSource;
 import com.youknow.data.source.remote.MoviesRemoteDataSource;
@@ -18,15 +24,10 @@ import com.youknow.domain.usecase.GetUpcomingMovies;
 import com.youknow.domain.usecase.impl.GetUpcomingMoviesUsecase;
 import com.youknow.movie.R;
 import com.youknow.movie.ui.adapter.MoviesAdapter;
+import com.youknow.movie.ui.common.GridItemDecoration;
 import com.youknow.movie.ui.details.DetailsActivity;
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import static com.youknow.movie.ui.MainActivity.MOVIE_ID;
 
@@ -62,7 +63,8 @@ public class NowPlayingFragment extends Fragment implements NowPlayingContract.V
 
         moviesAdapter = new MoviesAdapter(getContext(), this);
         rvMovies.setAdapter(moviesAdapter);
-        rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvMovies.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        rvMovies.addItemDecoration(new GridItemDecoration(32));
 
         presenter.getUpcomingMovies();
     }
