@@ -1,9 +1,9 @@
 package com.youknow.data.source.remote.api.model;
 
 import com.google.gson.annotations.SerializedName;
-
 import com.youknow.domain.model.Movie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -40,8 +40,7 @@ public class TmdbMovieResp {
     @SerializedName("spoken_languages")
     private List<SpokenLanguage> spokenLanguages;
     private String status;
-    @SerializedName("tagline")
-    private String tagLine;
+    private String tagline;
     private String title;
     private boolean video;
     @SerializedName("vote_average")
@@ -50,8 +49,14 @@ public class TmdbMovieResp {
     private int voteCount;
 
     public static Movie mapToDomain(TmdbMovieResp movieResp) {
+        List<String> genreList = new ArrayList<>();
+        for (Genre genre : movieResp.genres) {
+            genreList.add(genre.getName());
+        }
+
         return new Movie(
                 movieResp.adult,
+                genreList,
                 movieResp.homepage,
                 movieResp.id,
                 movieResp.overview,
@@ -60,6 +65,7 @@ public class TmdbMovieResp {
                 movieResp.releaseDate,
                 movieResp.runtime,
                 movieResp.status,
+                movieResp.tagline,
                 movieResp.title,
                 movieResp.voteAverage,
                 movieResp.voteCount

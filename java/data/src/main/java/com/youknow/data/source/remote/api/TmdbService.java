@@ -15,7 +15,10 @@ public interface TmdbService {
     @GET("/3/movie/now_playing")
     Call<NowPlayingResp> getMoviesNowPlaying(@Query("api_key") String apiKey);
 
+    @GET("/3/movie/upcoming")
+    Call<NowPlayingResp> getMoviesUpcoming(@Query("api_key") String apiKey);
+
     @GET("/3/movie/{movieId}?api_key=")
-    Call<TmdbMovieResp> getMovie(@Query("api_key") String apiKey, @Path("movieId") String movieId);
+    Call<TmdbMovieResp> getMovie(@Path("movieId") String movieId, @Query("api_key") String apiKey);
 
 }

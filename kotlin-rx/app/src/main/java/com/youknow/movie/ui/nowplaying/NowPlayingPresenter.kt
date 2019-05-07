@@ -24,12 +24,11 @@ class NowPlayingPresenter(
     }
 
     override fun getMoviesNowPlaying() {
+        view.showProgressBar(View.VISIBLE)
+        view.hideError()
+
         disposable.add(
             getMovies.get()
-                .doOnSubscribe {
-                    view.showProgressBar(View.VISIBLE)
-                    view.hideError()
-                }
                 .subscribeOn(ioScheduler)
                 .observeOn(uiScheduler)
                 .subscribe({ movies ->

@@ -1,4 +1,4 @@
-package com.youknow.movie.ui.movies;
+package com.youknow.movie.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,11 +19,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieHolder> {
 
+    public interface MovieClickListener {
+        void onMovieClick(String movieId);
+    }
+
     private Context context;
+    private MovieClickListener movieClickListener;
     private List<SimpleMovie> movies = new ArrayList<>();
 
-    public MoviesAdapter(Context context) {
+    public MoviesAdapter(Context context, MovieClickListener listener) {
         this.context = context;
+        this.movieClickListener = listener;
     }
 
     @NonNull
@@ -34,12 +40,19 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieHolde
 
     @Override
     public void onBindViewHolder(@NonNull MovieHolder holder, int i) {
-        SimpleMovie movie = movies.get(i);
+        final SimpleMovie movie = movies.get(i);
 
         Glide.with(context).load("https://image.tmdb.org/t/p/w500/" + movie.getPosterPath()).into(holder.ivPoster);
         holder.tvTitle.setText(movie.getTitle());
         holder.tvReleaseDate.setText(movie.getReleaseDate());
         holder.tvRatingAvg.setText(String.valueOf(movie.getVoteAverage()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movieClickListener.onMovieClick(String.valueOf(movie.getId()));
+            }
+        });
     }
 
     @Override
@@ -53,14 +66,14 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieHolde
         notifyDataSetChanged();
     }
 
-    public static class MovieHolder extends RecyclerView.ViewHolder {
+    class MovieHolder extends RecyclerView.ViewHolder {
 
-        public ImageView ivPoster;
-        public TextView tvTitle;
-        public TextView tvReleaseDate;
-        public TextView tvRatingAvg;
+        ImageView ivPoster;
+        TextView tvTitle;
+        TextView tvReleaseDate;
+        TextView tvRatingAvg;
 
-        public MovieHolder(View itemView) {
+        MovieHolder(View itemView) {
             super(itemView);
 
             ivPoster = itemView.findViewById(R.id.ivPoster);

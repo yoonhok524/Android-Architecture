@@ -15,7 +15,9 @@ public interface MoviesRepository {
         void onMovieLoaded(Movie movie);
     }
 
-    void getMovies(MoviesLoadedCallback callback);
+    void getNowPlaying(MoviesLoadedCallback callback);
+
+    void getUpcoming(MoviesLoadedCallback callback);
 
     void getMovie(String movieId, MovieLoadedCallback callback);
 

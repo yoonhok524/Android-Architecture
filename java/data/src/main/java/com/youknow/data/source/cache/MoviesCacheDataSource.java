@@ -6,7 +6,12 @@ import com.youknow.domain.repository.MoviesRepository;
 public class MoviesCacheDataSource implements MoviesDataSource {
 
     @Override
-    public void getMovies(MoviesRepository.MoviesLoadedCallback callback) {
+    public void getNowPlaying(MoviesRepository.MoviesLoadedCallback callback) {
+
+    }
+
+    @Override
+    public void getUpcoming(MoviesRepository.MoviesLoadedCallback callback) {
 
     }
 

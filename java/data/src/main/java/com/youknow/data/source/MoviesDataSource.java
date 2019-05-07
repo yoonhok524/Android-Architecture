@@ -4,7 +4,9 @@ import com.youknow.domain.repository.MoviesRepository;
 
 public interface MoviesDataSource {
 
-    void getMovies(MoviesRepository.MoviesLoadedCallback callback);
+    void getNowPlaying(MoviesRepository.MoviesLoadedCallback callback);
+
+    void getUpcoming(MoviesRepository.MoviesLoadedCallback callback);
 
     void getMovie(String movieId, MoviesRepository.MovieLoadedCallback callback);
 

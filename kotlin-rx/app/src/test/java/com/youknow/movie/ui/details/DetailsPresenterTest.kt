@@ -28,7 +28,7 @@ class DetailsPresenterTest {
     private lateinit var testScheduler: TestScheduler
 
     private val mockMovieId = "mockId"
-    private val mockMovie = Movie(false, "homepage", 1, "overview", 1f, "path", "2019-03-01", 100, "release", "title", 9.5f, 10)
+    private val mockMovie = Movie(false, listOf("drama"),"homepage", 1, "overview", 1f, "path", "2019-03-01", 100, "release", "tagline", "title", 9.5f, 10)
 
     @Before
     fun setup() {

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import com.youknow.data.repository.MoviesRepositoryImpl
 import com.youknow.data.source.cache.MoviesCacheDataSource
 import com.youknow.data.source.remote.MoviesRemoteDataSource
@@ -16,6 +17,7 @@ import com.youknow.domain.usecase.GetNowPlayingMoviesUsecase
 import com.youknow.movie.R
 import com.youknow.movie.ui.MOVIE_ID
 import com.youknow.movie.ui.adapter.MoviesAdapter
+import com.youknow.movie.ui.common.GridItemDecoration
 import com.youknow.movie.ui.details.DetailsActivity
 import kotlinx.android.synthetic.main.fragment_movies.*
 import org.jetbrains.anko.AnkoLogger
@@ -48,7 +50,8 @@ class NowPlayingFragment : Fragment(), NowPlayingContract.View, MoviesAdapter.Mo
         presenter.getMoviesNowPlaying()
 
         rvMovies.adapter = moviesAdapter
-        rvMovies.layoutManager = LinearLayoutManager(context)
+        rvMovies.layoutManager = GridLayoutManager(context, 3)
+        rvMovies.addItemDecoration(GridItemDecoration(32))
 
         info("[Movies] onViewCreated")
     }
