@@ -1,15 +1,15 @@
 package com.youknow.movie.ui;
 
-import com.youknow.movie.ui.nowplaying.NowPlayingFragment;
-import com.youknow.movie.ui.upcoming.UpcomingFragment;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.youknow.movie.ui.nowplaying.NowPlayingFragment;
+import com.youknow.movie.ui.upcoming.UpcomingFragment;
+
 public class BottomNavigationAdapter extends FragmentStatePagerAdapter {
 
-    public BottomNavigationAdapter(FragmentManager fm) {
+    BottomNavigationAdapter(FragmentManager fm) {
         super(fm);
     }
 
