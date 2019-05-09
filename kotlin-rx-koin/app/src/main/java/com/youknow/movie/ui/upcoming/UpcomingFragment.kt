@@ -22,17 +22,20 @@ import com.youknow.movie.ui.common.GridItemDecoration
 import kotlinx.android.synthetic.main.fragment_movies.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.koin.android.ext.android.inject
 
 class UpcomingFragment : Fragment(), UpcomingContract.View, MoviesAdapter.MovieClickListener, AnkoLogger {
 
-    private val presenter: UpcomingContract.Presenter by lazy {
-        val movieCacheDataSource = MoviesCacheDataSource()
-        val movieRemoteDataSource = MoviesRemoteDataSource(MoviesApi.getService())
-        val movieRepository = MoviesRepositoryImpl(movieCacheDataSource, movieRemoteDataSource)
-        val getUpcomingMoviesUsecase = GetUpcomingMoviesUsecase(movieRepository)
+//    private val presenter: UpcomingContract.Presenter by lazy {
+//        val movieCacheDataSource = MoviesCacheDataSource()
+//        val movieRemoteDataSource = MoviesRemoteDataSource(MoviesApi.getService())
+//        val movieRepository = MoviesRepositoryImpl(movieCacheDataSource, movieRemoteDataSource)
+//        val getUpcomingMoviesUsecase = GetUpcomingMoviesUsecase(movieRepository)
+//
+//        UpcomingPresenter(getUpcomingMoviesUsecase)
+//    }
 
-        UpcomingPresenter(this, getUpcomingMoviesUsecase)
-    }
+    private val presenter: UpcomingContract.Presenter by inject()
 
     private val moviesAdapter: MoviesAdapter by lazy {
         MoviesAdapter(
@@ -47,6 +50,8 @@ class UpcomingFragment : Fragment(), UpcomingContract.View, MoviesAdapter.MovieC
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        presenter.subscribe(this)
         presenter.getUpcomingMovies()
 
         rvMovies.adapter = moviesAdapter

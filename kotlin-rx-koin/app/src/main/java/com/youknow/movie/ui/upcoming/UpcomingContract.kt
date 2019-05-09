@@ -11,6 +11,7 @@ interface UpcomingContract {
     }
 
     interface Presenter {
+        fun subscribe(view: View)
         fun unsubscribe()
         fun getUpcomingMovies()
     }
