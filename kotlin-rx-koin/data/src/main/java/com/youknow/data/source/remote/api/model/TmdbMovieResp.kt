@@ -29,7 +29,7 @@ data class TmdbMovieResp(
     val productionCountries: List<ProductionCountry> = listOf(),
     @SerializedName("release_date")
     val releaseDate: String = "",
-    val revenue: Int = 0,
+    val revenue: Long = 0L,
     val runtime: Int = 0,
     @SerializedName("spoken_languages")
     val spokenLanguages: List<SpokenLanguage> = listOf(),
