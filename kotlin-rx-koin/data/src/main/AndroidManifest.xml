@@ -1,2 +1,2 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.youknow.firebase.auth.data"/>
+          package="com.youknow.data"/>

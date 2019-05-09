@@ -1,4 +1,4 @@
-package com.youknow.firebase.auth.data;
+package com.youknow.data;
 
 import org.junit.Test;
 

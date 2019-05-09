@@ -48,6 +48,9 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
+    // Koin
+    implementation 'org.koin:koin-android:2.0.0-GA'
+
     // Test
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-all:1.10.19'

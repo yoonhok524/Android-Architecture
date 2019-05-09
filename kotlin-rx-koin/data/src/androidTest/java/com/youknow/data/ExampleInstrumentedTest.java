@@ -1,4 +1,4 @@
-package com.youknow.firebase.auth.data;
+package com.youknow.data;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.youknow.firebase.auth.data.test", appContext.getPackageName());
+        assertEquals("com.youknow.data.test", appContext.getPackageName());
     }
 }

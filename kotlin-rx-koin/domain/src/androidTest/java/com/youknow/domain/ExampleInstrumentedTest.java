@@ -1,4 +1,4 @@
-package com.youknow.firebase.auth.domain;
+package com.youknow.domain;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.youknow.firebase.auth.domain.test", appContext.getPackageName());
+        assertEquals("com.youknow.domain.test", appContext.getPackageName());
     }
 }

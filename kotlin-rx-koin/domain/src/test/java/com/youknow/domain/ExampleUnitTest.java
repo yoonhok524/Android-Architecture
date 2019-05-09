@@ -1,4 +1,4 @@
-package com.youknow.firebase.auth.domain;
+package com.youknow.domain;
 
 import org.junit.Test;
 
