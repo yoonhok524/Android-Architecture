@@ -35,7 +35,7 @@ public class TmdbMovieResp {
     private List<ProductionCountry> productionCountries;
     @SerializedName("release_date")
     private String releaseDate;
-    private int revenue;
+    private long revenue;
     private int runtime;
     @SerializedName("spoken_languages")
     private List<SpokenLanguage> spokenLanguages;

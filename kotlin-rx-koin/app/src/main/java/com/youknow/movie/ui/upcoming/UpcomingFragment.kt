@@ -26,15 +26,6 @@ import org.koin.android.ext.android.inject
 
 class UpcomingFragment : Fragment(), UpcomingContract.View, MoviesAdapter.MovieClickListener, AnkoLogger {
 
-//    private val presenter: UpcomingContract.Presenter by lazy {
-//        val movieCacheDataSource = MoviesCacheDataSource()
-//        val movieRemoteDataSource = MoviesRemoteDataSource(MoviesApi.getService())
-//        val movieRepository = MoviesRepositoryImpl(movieCacheDataSource, movieRemoteDataSource)
-//        val getUpcomingMoviesUsecase = GetUpcomingMoviesUsecase(movieRepository)
-//
-//        UpcomingPresenter(getUpcomingMoviesUsecase)
-//    }
-
     private val presenter: UpcomingContract.Presenter by inject()
 
     private val moviesAdapter: MoviesAdapter by lazy {
@@ -55,7 +46,7 @@ class UpcomingFragment : Fragment(), UpcomingContract.View, MoviesAdapter.MovieC
         presenter.getUpcomingMovies()
 
         rvMovies.adapter = moviesAdapter
-        rvMovies.layoutManager = GridLayoutManager(context, 2)
+        rvMovies.layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.grid_layout_columns))
         rvMovies.addItemDecoration(GridItemDecoration(4))
 
         info("[Movies] onViewCreated")

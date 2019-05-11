@@ -2,11 +2,10 @@ package com.youknow.movie.ui.upcoming
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.youknow.data.repository.MoviesRepositoryImpl
 import com.youknow.data.source.cache.MoviesCacheDataSource
@@ -16,12 +15,13 @@ import com.youknow.domain.model.SimpleMovie
 import com.youknow.domain.usecase.GetUpcomingMoviesUsecase
 import com.youknow.movie.R
 import com.youknow.movie.ui.MOVIE_ID
-import com.youknow.movie.ui.details.DetailsActivity
 import com.youknow.movie.ui.adapter.MoviesAdapter
 import com.youknow.movie.ui.common.GridItemDecoration
+import com.youknow.movie.ui.details.DetailsActivity
 import kotlinx.android.synthetic.main.fragment_movies.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+
 
 class UpcomingFragment : Fragment(), UpcomingContract.View, MoviesAdapter.MovieClickListener, AnkoLogger {
 
@@ -50,8 +50,8 @@ class UpcomingFragment : Fragment(), UpcomingContract.View, MoviesAdapter.MovieC
         presenter.getUpcomingMovies()
 
         rvMovies.adapter = moviesAdapter
-        rvMovies.layoutManager = GridLayoutManager(context, 3)
-        rvMovies.addItemDecoration(GridItemDecoration(32))
+        rvMovies.layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.grid_layout_columns))
+        rvMovies.addItemDecoration(GridItemDecoration(4))
 
         info("[Movies] onViewCreated")
     }

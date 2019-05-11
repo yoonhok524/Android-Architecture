@@ -50,8 +50,8 @@ class NowPlayingFragment : Fragment(), NowPlayingContract.View, MoviesAdapter.Mo
         presenter.getMoviesNowPlaying()
 
         rvMovies.adapter = moviesAdapter
-        rvMovies.layoutManager = GridLayoutManager(context, 3)
-        rvMovies.addItemDecoration(GridItemDecoration(32))
+        rvMovies.layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.grid_layout_columns))
+        rvMovies.addItemDecoration(GridItemDecoration(4))
 
         info("[Movies] onViewCreated")
     }
