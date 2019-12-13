@@ -1,8 +1,13 @@
-# Youknow-Movie
+# Android Architecture
 
-This is sample Android movie application for Clean Architecture.
+This is sample Android movie application for Android App Architecture.
 
-  * Kotlin version (+Rx)
+  * Clean Architecture
+  * Kotlin version
+    * MVP + RxJava
+    * MVP + RxJava + Koin
+    * MVP + RxJava + Dagger2 (developing...)
+    * MVVM (AAC) + RxJava (developing...)
   * Java version
   
   
