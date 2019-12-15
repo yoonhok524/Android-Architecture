@@ -4,7 +4,6 @@ import android.view.View
 import com.youknow.movie.domain.model.SimpleMovie
 import com.youknow.movie.domain.usecase.GetNowPlayingMovies
 import com.youknow.movie.R
-import io.reactivex.Single
 import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
@@ -22,7 +21,7 @@ class MoviesPresenterTest {
     @Mock
     private lateinit var getNowPlayingMovies: GetNowPlayingMovies
 
-    private lateinit var moviesPresenter: NowPlayingPresenter
+    private lateinit var moviesPresenter: NowPlayingViewModel
 
     private lateinit var inOrder: InOrder
     private lateinit var testScheduler: TestScheduler
@@ -47,7 +46,7 @@ class MoviesPresenterTest {
         inOrder = Mockito.inOrder(mockView)
 
         testScheduler = TestScheduler()
-        moviesPresenter = NowPlayingPresenter(mockView, getNowPlayingMovies, testScheduler, testScheduler)
+        moviesPresenter = NowPlayingViewModel(mockView, getNowPlayingMovies, testScheduler, testScheduler)
     }
 
     @Test

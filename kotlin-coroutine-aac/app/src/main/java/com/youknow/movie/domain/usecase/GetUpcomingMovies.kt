@@ -1,10 +1,9 @@
 package com.youknow.movie.domain.usecase
 
 import com.youknow.movie.domain.model.SimpleMovie
-import io.reactivex.Single
+import androidx.lifecycle.LiveData
 
 interface GetUpcomingMovies {
-
-    fun get(): Single<List<SimpleMovie>>
+    suspend fun get(): List<SimpleMovie>
 
 }

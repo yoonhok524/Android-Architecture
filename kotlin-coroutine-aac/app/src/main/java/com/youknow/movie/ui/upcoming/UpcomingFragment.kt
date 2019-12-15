@@ -12,7 +12,7 @@ import com.youknow.movie.data.source.cache.MoviesCacheDataSource
 import com.youknow.movie.data.source.remote.MoviesRemoteDataSource
 import com.youknow.movie.data.source.remote.api.MoviesApi
 import com.youknow.movie.domain.model.SimpleMovie
-import com.youknow.movie.domain.usecase.GetUpcomingMoviesUsecase
+import com.youknow.movie.domain.usecase.impl.GetUpcomingMoviesUsecase
 import com.youknow.movie.R
 import com.youknow.movie.ui.MOVIE_ID
 import com.youknow.movie.ui.adapter.MoviesAdapter
@@ -21,16 +21,16 @@ import com.youknow.movie.ui.details.DetailsActivity
 import kotlinx.android.synthetic.main.fragment_movies.*
 
 
-class UpcomingFragment : Fragment(), UpcomingContract.View, MoviesAdapter.MovieClickListener {
+class UpcomingFragment : Fragment(), MoviesAdapter.MovieClickListener {
 
-    private val presenter: UpcomingContract.Presenter by lazy {
-        val movieCacheDataSource = MoviesCacheDataSource()
-        val movieRemoteDataSource = MoviesRemoteDataSource(MoviesApi.getService())
-        val movieRepository = MoviesRepositoryImpl(movieCacheDataSource, movieRemoteDataSource)
-        val getUpcomingMoviesUsecase = GetUpcomingMoviesUsecase(movieRepository)
-
-        UpcomingPresenter(this, getUpcomingMoviesUsecase)
-    }
+//    private val presenter: UpcomingContract.Presenter by lazy {
+//        val movieCacheDataSource = MoviesCacheDataSource()
+//        val movieRemoteDataSource = MoviesRemoteDataSource(MoviesApi.getService())
+//        val movieRepository = MoviesRepositoryImpl(movieCacheDataSource, movieRemoteDataSource)
+//        val getUpcomingMoviesUsecase = GetUpcomingMoviesUsecase(movieRepository)
+//
+//        UpcomingPresenter(this, getUpcomingMoviesUsecase)
+//    }
 
     private val moviesAdapter: MoviesAdapter by lazy {
         MoviesAdapter(
@@ -45,7 +45,7 @@ class UpcomingFragment : Fragment(), UpcomingContract.View, MoviesAdapter.MovieC
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.getUpcomingMovies()
+//        presenter.getUpcomingMovies()
 
         rvMovies.adapter = moviesAdapter
         rvMovies.layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.grid_layout_columns))
@@ -54,27 +54,26 @@ class UpcomingFragment : Fragment(), UpcomingContract.View, MoviesAdapter.MovieC
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.unsubscribe()
     }
 
     override fun onMovieClick(movieId: String) {
         startActivity(Intent(context, DetailsActivity::class.java).putExtra(MOVIE_ID, movieId))
     }
 
-    override fun showProgressBar(visible: Int) {
+    fun showProgressBar(visible: Int) {
         moviesProgressBar.visibility = visible
     }
 
-    override fun hideError() {
+    fun hideError() {
         tvErrMessage.visibility = View.GONE
     }
 
-    override fun onError(msgResId: Int) {
+    fun onError(msgResId: Int) {
         tvErrMessage.visibility = View.VISIBLE
         tvErrMessage.setText(msgResId)
     }
 
-    override fun onMoviesLoaded(movies: List<SimpleMovie>) {
+    fun onMoviesLoaded(movies: List<SimpleMovie>) {
         moviesAdapter.movies.clear()
         moviesAdapter.movies.addAll(movies)
         moviesAdapter.notifyDataSetChanged()

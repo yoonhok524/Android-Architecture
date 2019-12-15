@@ -4,7 +4,7 @@ import android.view.View
 import com.youknow.movie.domain.model.Movie
 import com.youknow.movie.domain.usecase.GetMovie
 import com.youknow.movie.R
-import io.reactivex.Single
+import androidx.lifecycle.LiveData
 import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test

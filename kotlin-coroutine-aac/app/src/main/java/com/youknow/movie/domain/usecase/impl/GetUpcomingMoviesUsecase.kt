@@ -1,11 +1,12 @@
-package com.youknow.movie.domain.usecase
+package com.youknow.movie.domain.usecase.impl
 
 import com.youknow.movie.domain.model.SimpleMovie
 import com.youknow.movie.domain.repository.MoviesRepository
-import io.reactivex.Single
+import androidx.lifecycle.LiveData
+import com.youknow.movie.domain.usecase.GetUpcomingMovies
 
 class GetUpcomingMoviesUsecase(private val moviesRepository: MoviesRepository) : GetUpcomingMovies {
 
-    override fun get(): Single<List<SimpleMovie>> = moviesRepository.getUpcoming()
+    override suspend fun get(): List<SimpleMovie> = moviesRepository.getUpcoming()
 
 }

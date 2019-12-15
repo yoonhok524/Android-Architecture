@@ -1,11 +1,11 @@
-package com.youknow.movie.domain.usecase
+package com.youknow.movie.domain.usecase.impl
 
 import com.youknow.movie.domain.model.Movie
 import com.youknow.movie.domain.repository.MoviesRepository
-import io.reactivex.Single
+import com.youknow.movie.domain.usecase.GetMovie
 
-class GetMovieUsecase (private val moviesRepository: MoviesRepository): GetMovie {
+class GetMovieUsecase(private val moviesRepository: MoviesRepository) : GetMovie {
 
-    override fun get(id: String): Single<Movie> = moviesRepository.getMovie(id)
+    override suspend fun get(id: String): Movie = moviesRepository.getMovie(id)
 
 }

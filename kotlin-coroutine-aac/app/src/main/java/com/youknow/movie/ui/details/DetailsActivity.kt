@@ -7,30 +7,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.youknow.movie.data.repository.MoviesRepositoryImpl
-import com.youknow.movie.data.source.cache.MoviesCacheDataSource
-import com.youknow.movie.data.source.remote.MoviesRemoteDataSource
-import com.youknow.movie.data.source.remote.api.MoviesApi
-import com.youknow.movie.domain.model.Movie
-import com.youknow.movie.domain.usecase.GetMovieUsecase
 import com.youknow.movie.R
+import com.youknow.movie.domain.model.Movie
 import com.youknow.movie.ui.MOVIE_ID
 import com.youknow.movie.ui.adapter.GenreAdapter
 import kotlinx.android.synthetic.main.activity_details.*
 
 
-
-class DetailsActivity : AppCompatActivity(), DetailsContract.View {
+class DetailsActivity : AppCompatActivity() {
 
     private val TAG = DetailsActivity::class.java.simpleName
 
-    private val detailsPresenter: DetailsContract.Presenter by lazy {
-        val moviesCacheDataSource = MoviesCacheDataSource()
-        val moviesRemoteDataSource = MoviesRemoteDataSource(MoviesApi.getService())
-        val moviesRepository = MoviesRepositoryImpl(moviesCacheDataSource, moviesRemoteDataSource)
-        val getMovieUsecase = GetMovieUsecase(moviesRepository)
-        DetailsPresenter(this, getMovieUsecase)
-    }
+//    private val detailsPresenter: DetailsContract.Presenter by lazy {
+//        val moviesCacheDataSource = MoviesCacheDataSource()
+//        val moviesRemoteDataSource = MoviesRemoteDataSource(MoviesApi.getService())
+//        val moviesRepository = MoviesRepositoryImpl(moviesCacheDataSource, moviesRemoteDataSource)
+//        val getMovieUsecase = GetMovieUsecase(moviesRepository)
+//        DetailsPresenter(this, getMovieUsecase)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,19 +37,19 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
         }
 
         val movieId = intent.getStringExtra(MOVIE_ID)
-        detailsPresenter.getMovie(movieId)
+//        detailsPresenter.getMovie(movieId)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        detailsPresenter.unsubscribe()
+//        detailsPresenter.unsubscribe()
     }
 
-    override fun showProgressBar(visibility: Int) {
+    fun showProgressBar(visibility: Int) {
         movieProgressBar.visibility = visibility
     }
 
-    override fun onMovieLoaded(movie: Movie) {
+    fun onMovieLoaded(movie: Movie) {
         tvOverviewLabel.visibility = View.VISIBLE
 
         rvGenres.adapter = GenreAdapter(movie.genres)
@@ -69,12 +63,12 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
         tvTagline.text = "\"${movie.tagline}\""
     }
 
-    override fun onError(msgResId: Int) {
+    fun onError(msgResId: Int) {
         tvErrMessage.visibility = View.VISIBLE
         tvErrMessage.setText(msgResId)
     }
 
-    override fun hideError() {
+    fun hideError() {
         tvErrMessage.visibility = View.GONE
     }
 }
