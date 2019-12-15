@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import com.youknow.movie.R
 import com.youknow.movie.ui.MOVIE_ID
@@ -24,10 +25,7 @@ class NowPlayingFragment : Fragment(), MoviesAdapter.MovieClickListener {
     }
 
     private val moviesAdapter: MoviesAdapter by lazy {
-        MoviesAdapter(
-            context!!,
-            this
-        )
+        MoviesAdapter(context!!, this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,8 +36,7 @@ class NowPlayingFragment : Fragment(), MoviesAdapter.MovieClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         rvMovies.adapter = moviesAdapter
-        rvMovies.layoutManager =
-            GridLayoutManager(context, resources.getInteger(R.integer.grid_layout_columns))
+        rvMovies.layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.grid_layout_columns))
         rvMovies.addItemDecoration(GridItemDecoration(4))
 
         viewModel.movies.observe(viewLifecycleOwner, Observer {
@@ -47,14 +44,9 @@ class NowPlayingFragment : Fragment(), MoviesAdapter.MovieClickListener {
             moviesAdapter.movies.addAll(it)
             moviesAdapter.notifyDataSetChanged()
         })
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    fun showProgressBar(visibility: Int) {
-        moviesProgressBar.visibility = visibility
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            moviesProgressBar.visibility = if (it) View.VISIBLE else View.GONE
+        })
     }
 
     fun onError(msgResId: Int) {
