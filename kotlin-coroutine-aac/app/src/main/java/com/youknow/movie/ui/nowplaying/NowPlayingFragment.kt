@@ -2,6 +2,7 @@ package com.youknow.movie.ui.nowplaying
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,14 +40,19 @@ class NowPlayingFragment : Fragment(), MoviesAdapter.MovieClickListener {
         rvMovies.layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.grid_layout_columns))
         rvMovies.addItemDecoration(GridItemDecoration(4))
 
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            moviesProgressBar.visibility = if (it) View.VISIBLE else View.GONE
+        })
         viewModel.movies.observe(viewLifecycleOwner, Observer {
             moviesAdapter.movies.clear()
             moviesAdapter.movies.addAll(it)
             moviesAdapter.notifyDataSetChanged()
         })
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
-            moviesProgressBar.visibility = if (it) View.VISIBLE else View.GONE
-        })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("TEST", "[Movie] onDestroy")
     }
 
     fun onError(msgResId: Int) {

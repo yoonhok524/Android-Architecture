@@ -44,6 +44,9 @@ class UpcomingFragment : Fragment(), MoviesAdapter.MovieClickListener {
         rvMovies.layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.grid_layout_columns))
         rvMovies.addItemDecoration(GridItemDecoration(4))
 
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            moviesProgressBar.visibility = if (it) View.VISIBLE else View.GONE
+        })
         viewModel.movies.observe(viewLifecycleOwner, Observer {
             moviesAdapter.movies.clear()
             moviesAdapter.movies.addAll(it)
@@ -51,16 +54,8 @@ class UpcomingFragment : Fragment(), MoviesAdapter.MovieClickListener {
         })
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     override fun onMovieClick(movieId: String) {
         startActivity(Intent(context, DetailsActivity::class.java).putExtra(MOVIE_ID, movieId))
-    }
-
-    fun showProgressBar(visible: Int) {
-        moviesProgressBar.visibility = visible
     }
 
     fun hideError() {
