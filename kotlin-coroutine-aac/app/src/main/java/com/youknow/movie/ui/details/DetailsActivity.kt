@@ -33,6 +33,9 @@ class DetailsActivity : AppCompatActivity() {
             return
         }
 
+        viewModel.isLoading.observe(this, Observer {
+            movieProgressBar.visibility = if (it) View.VISIBLE else View.GONE
+        })
         viewModel.movie.observe(this, Observer { movie ->
             tvOverviewLabel.visibility = View.VISIBLE
 
