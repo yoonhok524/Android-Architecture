@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.youknow.movie.data.repository.MoviesRepositoryImpl
 import com.youknow.movie.data.source.cache.MoviesCacheDataSource
@@ -23,20 +25,12 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 
 class UpcomingFragment : Fragment(), MoviesAdapter.MovieClickListener {
 
-//    private val presenter: UpcomingContract.Presenter by lazy {
-//        val movieCacheDataSource = MoviesCacheDataSource()
-//        val movieRemoteDataSource = MoviesRemoteDataSource(MoviesApi.getService())
-//        val movieRepository = MoviesRepositoryImpl(movieCacheDataSource, movieRemoteDataSource)
-//        val getUpcomingMoviesUsecase = GetUpcomingMoviesUsecase(movieRepository)
-//
-//        UpcomingPresenter(this, getUpcomingMoviesUsecase)
-//    }
+    private val viewModel: UpcomingViewModel by lazy {
+        ViewModelProvider(this).get(UpcomingViewModel::class.java)
+    }
 
     private val moviesAdapter: MoviesAdapter by lazy {
-        MoviesAdapter(
-            context!!,
-            this
-        )
+        MoviesAdapter(context!!, this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -45,11 +39,16 @@ class UpcomingFragment : Fragment(), MoviesAdapter.MovieClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        presenter.getUpcomingMovies()
 
         rvMovies.adapter = moviesAdapter
         rvMovies.layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.grid_layout_columns))
         rvMovies.addItemDecoration(GridItemDecoration(4))
+
+        viewModel.movies.observe(viewLifecycleOwner, Observer {
+            moviesAdapter.movies.clear()
+            moviesAdapter.movies.addAll(it)
+            moviesAdapter.notifyDataSetChanged()
+        })
     }
 
     override fun onDestroy() {
@@ -71,11 +70,5 @@ class UpcomingFragment : Fragment(), MoviesAdapter.MovieClickListener {
     fun onError(msgResId: Int) {
         tvErrMessage.visibility = View.VISIBLE
         tvErrMessage.setText(msgResId)
-    }
-
-    fun onMoviesLoaded(movies: List<SimpleMovie>) {
-        moviesAdapter.movies.clear()
-        moviesAdapter.movies.addAll(movies)
-        moviesAdapter.notifyDataSetChanged()
     }
 }
