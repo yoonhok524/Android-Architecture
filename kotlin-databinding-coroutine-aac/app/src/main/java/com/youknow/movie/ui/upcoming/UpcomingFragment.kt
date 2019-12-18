@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,9 +26,7 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 
 class UpcomingFragment : Fragment(), MoviesAdapter.MovieClickListener {
 
-    private val viewModel: UpcomingViewModel by lazy {
-        ViewModelProvider(this).get(UpcomingViewModel::class.java)
-    }
+    private val viewModel: UpcomingViewModel by viewModels()
 
     private val moviesAdapter: MoviesAdapter by lazy {
         MoviesAdapter(context!!, this)

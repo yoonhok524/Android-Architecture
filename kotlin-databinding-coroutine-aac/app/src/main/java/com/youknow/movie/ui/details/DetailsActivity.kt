@@ -3,7 +3,9 @@ package com.youknow.movie.ui.details
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,9 +21,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private val TAG = DetailsActivity::class.java.simpleName
 
-    private val viewModel: DetailsViewModel by lazy {
-        ViewModelProvider(this).get(DetailsViewModel::class.java)
-    }
+    private val viewModel: DetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
