@@ -1,7 +1,7 @@
 # Android Architecture
 
 This is sample Android movie application for Android App Architecture.
-All projects are based on Clean Architecture using multi module.
+All projects are based on ***Clean Architecture*** using multi module.
 
 ## kotlin-coroutine-aac
   * Kotlin
