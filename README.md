@@ -1,14 +1,34 @@
 # Android Architecture
 
 This is sample Android movie application for Android App Architecture.
+All projects are based on Clean Architecture using multi module.
 
-  * Clean Architecture
-  * Kotlin version
-    * kotlin-coroutine-aac: Kotlin, Jetpack AAC (ViewModel, LiveData), Coroutine, Manual Dependency Injection
-    * kotlin-rx-koin: Kotlin, MVP, RxJava, Koin
-    * kotlin-rx: Kotlin, MVP, RxJava, Manual Dependency Injection
-  * Java version
-    * java: Java, MVP, RxJava, Manual Dependency Injection
+## kotlin-coroutine-aac
+  * Kotlin
+  * Jetpack AAC (ViewModel, LiveData)
+  * Coroutine
+  * Retrofit
+  * Manual Dependency Injection
+
+## kotlin-rx-koin
+  * Kotlin
+  * MVP
+  * RxJava
+  * Retrofit
+  * Koin
+
+## kotlin-rx
+  * Kotlin
+  * MVP
+  * RxJava
+  * Retrofit
+  * Manual Dependency Injection
+
+## java
+  * Java
+  * MVP
+  * Retrofit with Callback
+  * Manual Dependency Injection
   
   
 ## Used API
