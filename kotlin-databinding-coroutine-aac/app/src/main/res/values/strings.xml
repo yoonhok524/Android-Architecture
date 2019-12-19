@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Youknow Movie</string>
+    <string name="err_movies_not_exists">There are no movies...</string>
+    <string name="err_get_movies_failed">Cannot retrieve movies...</string>
+    <string name="err_get_movie_failed">Cannot retrieve movie...</string>
+    <string name="runtime_args">runtime: %1$dmin</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="overview">Overview</string>
+</resources>
