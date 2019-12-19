@@ -3,9 +3,10 @@ package com.youknow.movie.ui.adapter
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.youknow.movie.R
 
 @BindingAdapter("goneUnless")
 fun setProgressBarVisibility(progressBar: ProgressBar, visibility: Boolean) {
@@ -14,8 +15,24 @@ fun setProgressBarVisibility(progressBar: ProgressBar, visibility: Boolean) {
 
 @BindingAdapter("imageUrl")
 fun loadImageByUrl(imageView: ImageView, url: String?) {
-    Glide.with(imageView.context)
-        .load("https://image.tmdb.org/t/p/w500/$url")
-//        .placeholder(R.drawable.ic_movie)
-        .into(imageView)
+    url?.let {
+        Glide.with(imageView.context)
+            .load("https://image.tmdb.org/t/p/w500/$it")
+            .into(imageView)
+    }
+}
+
+@BindingAdapter("genres")
+fun genres(recyclerView: RecyclerView, genres: List<String>?) {
+    genres?.let {
+        (recyclerView.adapter as GenreAdapter?)?.let { adapter ->
+            adapter.genres.clear()
+            adapter.genres.addAll(it)
+        }
+    }
+}
+
+@BindingAdapter("contentsVisibility")
+fun setContentsVisibility(container: ConstraintLayout, isLoading: Boolean) {
+    container.visibility = if (isLoading) View.GONE else View.VISIBLE
 }

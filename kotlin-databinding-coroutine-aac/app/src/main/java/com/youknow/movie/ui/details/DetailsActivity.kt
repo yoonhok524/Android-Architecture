@@ -6,7 +6,6 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.youknow.movie.R
@@ -37,25 +36,11 @@ class DetailsActivity : AppCompatActivity() {
 
         dataBinding.viewModel = viewModel
         dataBinding.lifecycleOwner = this
+        dataBinding.rvGenres.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        dataBinding.rvGenres.adapter = GenreAdapter()
 
         val movieId = intent.getStringExtra(MOVIE_ID)
         viewModel.getMovie(movieId)
-    }
-
-    private fun setObserve() {
-//        viewModel.isLoading.observe(this, Observer {
-//            dataBinding.progressBarVisibility = it
-//        })
-
-//        viewModel.movie.observe(this, Observer { movie ->
-//            Log.d(TAG, "[Movie] $movie")
-//            dataBinding.movie = movie
-//
-//            labelOverview.visibility = View.VISIBLE
-//
-//            rvGenres.adapter = GenreAdapter(movie.genres)
-//            rvGenres.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-//        })
     }
 
     fun onError(msgResId: Int) {
