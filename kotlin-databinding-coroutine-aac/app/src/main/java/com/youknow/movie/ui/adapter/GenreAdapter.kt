@@ -12,13 +12,7 @@ class GenreAdapter(
 ) : RecyclerView.Adapter<GenreAdapter.GenreHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreHolder =
-        GenreHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_genre,
-                parent,
-                false
-            )
-        )
+        GenreHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_genre, parent, false))
 
     override fun getItemCount(): Int = genres.size
 

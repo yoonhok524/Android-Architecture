@@ -1,6 +1,7 @@
 package com.youknow.movie.ui.details
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -36,6 +37,8 @@ class DetailsViewModel(
             movie.value = withContext(Dispatchers.IO) {
                 getMovie.get(movieId)
             }
+
+            Log.d(TAG, "[Movie] ${movie.value}")
 
             isLoading.value = false
         }
